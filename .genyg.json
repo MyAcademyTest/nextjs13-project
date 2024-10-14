@@ -2,7 +2,7 @@
   "version": 2,
   "packages": {
     "core": true,
-    "mui": false,
+    "mui": true,
     "spa": false,
     "translations": false,
     "mongodb": false,
