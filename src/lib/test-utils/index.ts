@@ -1,7 +1,7 @@
-/*
+import { User } from "@/models/server/User";
+
 export const cleanDb = async () => {
-  await Model.deleteMany();
+  await User.deleteMany();
 };
- */
 
 export {};

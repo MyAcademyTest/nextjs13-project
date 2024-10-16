@@ -24,11 +24,7 @@ export default async function handler(
 
     const { name, description, price } = payload;
 
-    console.log({ name, description, price });
-
     const product = await Product.create(name, description, price);
-
-    console.log({ product });
 
     return ResponseHandler.json<PostProductsApi.SuccessResponse>(res, {
       product: product.toClientVersion(),

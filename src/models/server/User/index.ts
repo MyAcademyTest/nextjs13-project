@@ -93,6 +93,10 @@ export class User implements WithId<IUser> {
     return iUsers.map((iUser) => new User(iUser));
   }
 
+  static async deleteMany() {
+    await mongoDao.deleteMany<IUser>(User.collectionName, {});
+  }
+
   /* Mostly for internal use */
 
   fromInterface(iUser: IUser) {

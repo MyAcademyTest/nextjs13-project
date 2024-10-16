@@ -9,7 +9,7 @@ const payloadValidations =
   (): YupShapeByInterface<PostProductsApi.Payload> => ({
     name: yup.string().required(),
     description: yup.string().required(),
-    price: yup.number().required(),
+    price: yup.number().min(0, "price must be a positive number").required(),
   });
 
 export default () => ({

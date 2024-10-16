@@ -123,6 +123,9 @@ export class Product implements WithId<IProduct> {
     };
   }
 
+  static async deleteMany() {
+    await mongoDao.deleteMany<IProduct>(Product.collectionName, {});
+  }
   /* Mostly for internal use */
 
   fromInterface(iProduct: IProduct) {

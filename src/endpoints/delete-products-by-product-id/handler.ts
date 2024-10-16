@@ -23,9 +23,7 @@ export default async function handler(
     }
 
     const { productId } = queryStringParameters;
-    console.log(productId.toHexString());
     const product = await Product.getById(productId);
-    console.log({ product });
 
     if (!product) {
       return ResponseHandler.json<ErrorResponse>(
@@ -34,6 +32,7 @@ export default async function handler(
         StatusCodes.NotFound,
       );
     }
+
     await Product.delete(product._id);
 
     return ResponseHandler.json<DeleteProductsByProductIdApi.SuccessResponse>(
