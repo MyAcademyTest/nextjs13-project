@@ -1,4 +1,9 @@
 {
-  "rewrites": [],
-  "env": []
+  "rewrites": [
+    {
+      "source": "/admin-panel/:path*",
+      "destination": "/admin-panel"
+    }
+  ],
+  "env": ["MONGODB_NAME", "MONGODB_URI"]
 }

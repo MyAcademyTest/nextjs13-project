@@ -1,15 +1,19 @@
 import React, { memo } from "react";
 import { Button, ButtonProps, CircularProgress } from "@mui/material";
+import { useAppButton } from "./index.hooks";
 
-export type AppButtonProps = {
+type AppButtonProps = {
   loading?: boolean;
+  path?: string;
 } & ButtonProps;
 
 export const AppButton = memo(
-  ({ loading = false, ...props }: AppButtonProps) => {
+  ({ loading = false, path, onClick, ...props }: AppButtonProps) => {
+    const { onButtonClicked } = useAppButton(path, onClick);
+
     if (loading) {
       return (
-        <Button {...props}>
+        <Button {...props} onClick={onButtonClicked}>
           <CircularProgress
             color={
               (props.color ?? "primary") === "primary" ? "secondary" : "primary"
@@ -20,7 +24,7 @@ export const AppButton = memo(
       );
     }
 
-    return <Button {...props} />;
+    return <Button {...props} onClick={onButtonClicked} />;
   },
 );
 AppButton.displayName = "AppButton";
